@@ -3,8 +3,8 @@ global rightList
 
 function findTotalDistance(file)
 	execute readFile passing file
-	execute sortList passing the leftList
-	execute sortList passing the rightList
+	sort the leftList
+	sort the rightList
 	keep a running total of Math.abs(right[current]-left[current])
 	when no more file left to read return total 
 
@@ -15,6 +15,3 @@ function readFile(file)
 		skip over a tab
 		read a number
 		add it to the right list
-
-function sortList(list)
-	sort the list

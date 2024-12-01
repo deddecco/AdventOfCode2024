@@ -15,6 +15,3 @@ function readFile(file)
 		skip over a tab
 		read a number
 		add it to the right list
-
-function sortList(list)
-	sort the list

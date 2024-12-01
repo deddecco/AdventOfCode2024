@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.util.Collections.*;
+
 public class Solution {
      static List<Integer> leftList = new ArrayList<>();
      static List<Integer> rightList = new ArrayList<>();
@@ -14,11 +16,14 @@ public class Solution {
      public static void main(String[] args) throws IOException {
           Solution solution = new Solution();
           solution.readFile(args[0]);
-          Collections.sort(leftList);
-          Collections.sort(rightList);
+          sort(leftList);
+          sort(rightList);
 
           int result = solution.calculateDistance(leftList, rightList);
           System.out.println("total distance: " + result);
+
+          int similarity = solution.calculateSimilarity(leftList, rightList);
+          System.out.println("similarity = " + similarity);
      }
 
      private void readFile(String fileName) throws IOException {
@@ -40,6 +45,17 @@ public class Solution {
           }
 
           return totalDistance;
+     }
+
+     public int calculateSimilarity(List<Integer> leftList, List<Integer> rightList) {
+          int similarity = 0;
+
+          for (int elem : leftList) {
+               int count = frequency(rightList, elem);
+               similarity += (count * elem);
+          }
+
+          return similarity;
      }
 
 

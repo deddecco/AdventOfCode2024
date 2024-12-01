@@ -40,21 +40,31 @@ public class Solution {
      public int calculateDistance(List<Integer> leftList, List<Integer> rightList) {
           int totalDistance = 0;
 
+          // pair the smallest numbers together
+          // then the next smallest
+          // etc.
+          // and calculate the running sum of the absolute distances between the pairs
           for (int i = 0; i < leftList.size(); i++) {
                totalDistance += Math.abs(leftList.get(i) - rightList.get(i));
           }
 
+
+          // return the sum
           return totalDistance;
      }
 
      public int calculateSimilarity(List<Integer> leftList, List<Integer> rightList) {
           int similarity = 0;
 
+
+          // multiply each number in the left list by how many ocurrences it has in the right list
+          // and keep a running total of these products
           for (int elem : leftList) {
                int count = frequency(rightList, elem);
                similarity += (count * elem);
           }
 
+          // return the total
           return similarity;
      }
 
